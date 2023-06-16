@@ -23,7 +23,9 @@ def parse_photo_link_double(elem):
 
 def get_download_folder():
     if os.name == "nt":
-        DOWNLOAD_FOLDER = f"{os.getenv('USERPROFILE')}\\Downloads"
+        DOWNLOAD_FOLDER = f"{os.getenv('USERPROFILE')}\\Downloads\\"
     else:  # PORT: For *Nix systems
-        DOWNLOAD_FOLDER = f"{os.getenv('HOME')}/Downloads"
+        DOWNLOAD_FOLDER = f"{os.getenv('HOME')}/Downloads/"
     return DOWNLOAD_FOLDER
+
+print(os.listdir(get_download_folder()))

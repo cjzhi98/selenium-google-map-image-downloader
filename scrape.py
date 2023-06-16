@@ -7,10 +7,10 @@ import time
 from helpers import *
 from pytz import timezone
 from datetime import datetime
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import uuid
-import urllib
+import urllib.request
 from selenium.webdriver.common.by import By
 
 kl = timezone("Asia/Kuala_Lumpur")
@@ -73,10 +73,13 @@ try:
     for image_url in photos:
         print(image_url)
         photo_name = str(uuid.uuid4()) + ".jpg"
-        photo_path = get_download_folder() + "\\" + photo_name
+        photo_path = get_download_folder() + photo_name
         photo_num = photo_num + 1
         urllib.request.urlretrieve(image_url, photo_path)
         photos_in_local.append(photo_path)
 except Exception as e:
     print(e)
+    driver.quit()
     pass
+
+driver.quit()
