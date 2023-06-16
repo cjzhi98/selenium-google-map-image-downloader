@@ -1,4 +1,4 @@
-# google-maps-photo-downloader
+# google-map-map-image-downloader
 Download Google Maps' Images with Ease using this selenium python script
 
 ```
