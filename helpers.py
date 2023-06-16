@@ -27,5 +27,3 @@ def get_download_folder():
     else:  # PORT: For *Nix systems
         DOWNLOAD_FOLDER = f"{os.getenv('HOME')}/Downloads/"
     return DOWNLOAD_FOLDER
-
-print(os.listdir(get_download_folder()))
