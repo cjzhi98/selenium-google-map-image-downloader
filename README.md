@@ -1,5 +1,5 @@
 # google-maps-photo-downloader
-Download Google Maps' Photos with Ease
+Download Google Maps' Images with Ease using this selenium python script
 
 ```
 pip install -r requirements.txt
