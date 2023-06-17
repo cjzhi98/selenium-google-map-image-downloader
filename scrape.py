@@ -21,7 +21,7 @@ url = input("Enter the url: ")
 options = webdriver.ChromeOptions()
 # options.add_argument("--headless")
 # options.add_argument("--window-size=1920x1080")
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
 
 driver.get(url)
 
