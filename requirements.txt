@@ -3,3 +3,4 @@ beautifulsoup4==4.11.1
 pytz==2022.1
 urllib3==1.26.11
 webdriver-manager==3.8.4
+chromedriver-autoinstaller
