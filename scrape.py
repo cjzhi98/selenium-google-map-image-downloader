@@ -1,4 +1,5 @@
 # Scrape Photos
+import traceback
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
@@ -33,7 +34,7 @@ photos = []
 
 time.sleep(5)
 
-first_img = WebDriverWait(driver, 60).until(
+first_img = WebDriverWait(driver, 300).until(
     EC.presence_of_element_located(
         (
             By.XPATH,
@@ -51,7 +52,7 @@ last_index = photo_elems[-1]["data-photo-index"]
 if int(last_index) >= 6:
     last_index = "6"
 
-img_result = WebDriverWait(driver, 60).until(
+img_result = WebDriverWait(driver, 300).until(
     EC.presence_of_element_located(
         (
             By.CSS_SELECTOR,
@@ -61,7 +62,7 @@ img_result = WebDriverWait(driver, 60).until(
 )
 driver.execute_script("arguments[0].scrollIntoView(true);", img_result)
 
-time.sleep(5)
+time.sleep(10)
 
 photo_page_html = BeautifulSoup(driver.page_source, "html.parser")
 
@@ -76,11 +77,12 @@ try:
     for photo in photo_elems[:20]:
         try:
             photo_link = retrive_ori_photo(parse_photo_link_double(str(photo)))
+            print(photo_link)
             resized_photo_link = setPhotoSize(photo_link, 1200)
             if "/p/" in resized_photo_link:
                 photos.append(resized_photo_link)
                 photo_num = photo_num + 1
-                print(photo_num)
+                print(resized_photo_link)
                 if photo_num == int(last_index):
                     break
         except:
@@ -88,6 +90,8 @@ try:
             continue
 
     print("\n========Downloading Photos========\n")
+
+    print(photos)
 
     for image_url in photos:
         print(image_url)
@@ -97,6 +101,7 @@ try:
         photos_in_local.append(photo_path)
 
 except Exception as e:
+    traceback.print_exc()
     driver.quit()
     pass
 
