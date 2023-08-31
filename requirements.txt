@@ -5,3 +5,4 @@ urllib3==1.26.11
 webdriver-manager==3.8.4
 chromedriver-autoinstaller
 packaging
+chromedriver_autoinstaller_fix

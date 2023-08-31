@@ -13,9 +13,9 @@ from selenium.webdriver.support import expected_conditions as EC
 import uuid
 import urllib.request
 from selenium.webdriver.common.by import By
-import chromedriver_autoinstaller
+import chromedriver_autoinstaller_fix
 
-chromedriver_autoinstaller.install()
+chromedriver_autoinstaller_fix.install()
 
 kl = timezone("Asia/Kuala_Lumpur")
 now = datetime.now(kl)
